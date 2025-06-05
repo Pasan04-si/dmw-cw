@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book a Room - Hotel Bougainvilla</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">Hotel Bougainvilla</div>
+            <ul>
+                      <li><a href="dashboard.php">Home</a></li>
+                <li><a href="rooms.html">Rooms</a></li>
+                <li><a href="facilities.html">Facilities</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="logout.php">Logout</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <section class="booking-section">
+            <h2>Check Room Availability</h2>
+            <form id="bookingForm" onsubmit="return validateBookingForm(event);">
+                <label for="checkin">Check-in Date:</label>
+                <input type="date" name="checkin" id="checkin" required>
+                <span class="error" id="checkin-error"></span>
+                
+                <label for="checkout">Check-out Date:</label>
+                <input type="date" name="checkout" id="checkout" required>
+                <span class="error" id="checkout-error"></span>
+                
+                <label for="room_type">Room Type:</label>
+                <select name="room_type" id="room_type" required>
+                    <option value="">Select Room Type</option>
+                    <option value="standard">Standard Room</option>
+                    <option value="deluxe">Deluxe Room</option>
+                    <option value="suite">Suite</option>
+                </select>
+                <span class="error" id="room-error"></span>
+                
+                <label for="guests">Number of Guests:</label>
+                <select name="guests" id="guests" required>
+                    <option value="">Select Number of Guests</option>
+                    <option value="1">1 Guest</option>
+                    <option value="2">2 Guests</option>
+                    <option value="3">3 Guests</option>
+                    <option value="4">4 Guests</option>
+                </select>
+                
+                <button type="submit">Check Availability</button>
+            </form>
+            <div id="availabilityResult"></div>
+        </section>
+    </main>
+
+    <script>
+        // Set minimum date to today
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('checkin').setAttribute('min', today);
+            document.getElementById('checkout').setAttribute('min', today);
+        });
+        
+        // Update checkout minimum date when checkin changes
+        document.getElementById('checkin').addEventListener('change', function() {
+            const checkinDate = new Date(this.value);
+            const nextDay = new Date(checkinDate.getTime() + 24 * 60 * 60 * 1000);
+            const minCheckout = nextDay.toISOString().split('T')[0];
+            document.getElementById('checkout').setAttribute('min', minCheckout);
+            
+            // Clear checkout if it's before the new minimum
+            const checkoutValue = document.getElementById('checkout').value;
+            if (checkoutValue && checkoutValue <= this.value) {
+                document.getElementById('checkout').value = '';
+            }
+        });
+        
+        function validateBookingForm(event) {
+            event.preventDefault();
+            
+            const checkin = document.getElementById('checkin').value;
+            const checkout = document.getElementById('checkout').value;
+            const roomType = document.getElementById('room_type').value;
+            let isValid = true;
+            
+            // Clear previous errors
+            document.querySelectorAll('.error').forEach(el => el.textContent = '');
+            
+            // Validate dates
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const checkinDate = new Date(checkin);
+            const checkoutDate = new Date(checkout);
+            
+            if (!checkin) {
+                document.getElementById('checkin-error').textContent = 'Check-in date is required';
+                isValid = false;
+            } else if (checkinDate < today) {
+                document.getElementById('checkin-error').textContent = 'Check-in date cannot be in the past';
+                isValid = false;
+            }
+            
+            if (!checkout) {
+                document.getElementById('checkout-error').textContent = 'Check-out date is required';
+                isValid = false;
+            } else if (checkoutDate <= checkinDate) {
+                document.getElementById('checkout-error').textContent = 'Check-out must be after check-in date';
+                isValid = false;
+            }
+            
+            // Check maximum stay duration (e.g., 30 days)
+            if (checkin && checkout) {
+                const daysDiff = (checkoutDate - checkinDate) / (1000 * 60 * 60 * 24);
+                if (daysDiff > 30) {
+                    document.getElementById('checkout-error').textContent = 'Maximum stay is 30 days';
+                    isValid = false;
+                }
+            }
+            
+            if (!roomType) {
+                document.getElementById('room-error').textContent = 'Please select a room type';
+                isValid = false;
+            }
+            
+            if (isValid) {
+                // Submit form via AJAX
+                submitBookingForm();
+            }
+            
+            return false; // Prevent default form submission
+        }
+        
+        async function submitBookingForm() {
+            const form = document.getElementById('bookingForm');
+            const formData = new FormData(form);
+            
+            try {
+                const response = await fetch('check_availability.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                
+                const text = await response.text();
+                document.getElementById('availabilityResult').innerHTML = text;
+            } catch (error) {
+                document.getElementById('availabilityResult').innerHTML = 
+                    '<p class="error">An error occurred while checking availability. Please try again.</p>';
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</body>
+</html>

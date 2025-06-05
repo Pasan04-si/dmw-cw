@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register - Hotel Bougainvilla</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Register</h2>
+        <form action="register.php" method="POST" >
+            <input type="hidden" name="csrf_token" value="">
+            
+            <label>Full Name:</label>
+            <input type="text" name="fullname" id="fullname" required maxlength="50">
+            <span class="error" id="fullname-error"></span>
+            
+            <label>Email:</label>
+            <input type="email" name="email" id="email" required maxlength="100">
+            <span class="error" id="email-error"></span>
+            
+            <label>Password:</label>
+            <input type="password" name="password" id="password" required><br><br>
+            
+            
+            
+            
+            <center><button type="submit">Register</button> <center>
+        </form><br>
+        
+        <p> <center>  Already have an account? <a href="log.html">Login here</a> <center></p>
+    </div>
+
+    <script>
+        function validateRegisterForm() {
+            const fullname = document.getElementById('fullname').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            let isValid = true;
+            
+            // Clear previous errors
+            document.querySelectorAll('.error').forEach(el => el.textContent = '');
+            
+            // Validate full name
+            if (fullname.length < 2) {
+                document.getElementById('fullname-error').textContent = 'Full name must be at least 2 characters';
+                isValid = false;
+            } else if (!/^[a-zA-Z\s]+$/.test(fullname)) {
+                document.getElementById('fullname-error').textContent = 'Full name can only contain letters and spaces';
+                isValid = false;
+            }
+            
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('email-error').textContent = 'Please enter a valid email address';
+                isValid = false;
+            }
+            
+            // Validate password
+            if (password.length < 8) {
+                document.getElementById('password-error').textContent = 'Password must be at least 8 characters long';
+                isValid = false;
+            } else if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])/.test(password)) {
+                document.getElementById('password-error').textContent = 'Password must meet all requirements';
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+        
+        
+    </script>
+</body>
+</html>

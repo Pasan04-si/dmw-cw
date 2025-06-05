@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Us - Hotel Bougainvilla</title>
+  <link rel="stylesheet" href="style1.css">
+  <style>
+    .services {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .service-box {
+      text-align: center;
+      width: 30%;
+    }
+
+    .service-box img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    /* Heading Styles */
+    .about-section h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #18548f;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .about-section h3 {
+      text-align: center;
+      font-size: 1.8rem;
+      color: #1e4b78;
+      margin: 2rem 0 1rem 0;
+      font-weight: 600;
+      position: relative;
+    }
+
+    .about-section h3::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      margin: 10px auto;
+      border-radius: 2px;
+    }
+
+    .service-box h4 {
+      font-size: 1.2rem;
+      color: #2c3e50;
+      margin: 15px 0 5px 0;
+      font-weight: 600;
+    }
+
+    /* Hotel Image Styles */
+    .hotel-image {
+      display: block;
+      margin: 20px auto;
+      width: 100%;
+      max-width: 800px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .hotel-image:hover {
+      transform: scale(1.02);
+    }
+
+    /* Paragraph Styles */
+    .about-section p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #555;
+      margin: 1rem 0;
+      text-align: justify;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .service-box p {
+      font-size: 1rem;
+      color: #666;
+      margin: 5px 0;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="logo">Hotel Bougainvilla</div>
+      <ul>
+             <li><a href="dashboard.php">Home</a></li>
+                <li><a href="rooms.html">Rooms</a></li>
+                <li><a href="facilities.html">Facilities</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="logout.php">Logout</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section class="about-section">
+      <h2>About Hotel Bougainvillea</h2>
+      <p>Founded in 2005, Hotel Bougainvillea has become one of Sri Lanka's most trusted hospitality brands. With an emphasis on comfort, luxury, and customer satisfaction, we provide a truly unforgettable experience for our guests.</p>
+      <img src="image/hotel7.avif" alt="Hotel Building" class="hotel-image">
+      
+      <h3>Our Mission</h3>
+      <p>To offer world-class accommodation and services to travelers from around the globe, ensuring a memorable stay enriched with warmth and elegance.</p>
+
+      <h3>Meet Our Team</h3>
+      <section class="services">
+    <div class="service-box">
+      <img src="image/manager.jpg" alt="Restaurant" />
+          <h4>Mr. Dilan Perera</h4>
+          <p><center>General Manager</center></p>
+        </div>
+       <div class="service-box">
+      <img src="image/exchef.jpg" alt="Travel" />
+          <h4>Mr. Ruwan Silva</h4>
+          <p><center>Executive Chef</center></p>
+        </div>
+      <div class="service-box">
+      <img src="image/desk.jpg" alt="Event" />
+          <h4>Ms. Nadeesha Fernando</h4>
+          <p><center>Front Desk Manager</center></p>
+        </div>
+      
+    </section>
+  </main>
+
+  
+</body>
+</html>

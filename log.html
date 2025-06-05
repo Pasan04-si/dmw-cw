@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login -Hotel Bougainvillal</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Login</h2>
+        <form action="login.php" method="POST" >
+            <input type="hidden" name="csrf_token" value="">
+            
+            <label>Email:</label>
+            <input type="email" name="email" id="email" required>
+            <span class="error" id="email-error"></span>
+            
+            <label>Password:</label>
+            <input type="password" name="password" id="password" required>
+            <span class="error" id="password-error"></span>
+            
+            <button type="submit">Login</button>
+        </form>
+        
+        <p >Don't have an account?&nbsp;<a href="reg.html" >Register here</a></p>
+
+    </div>
+
+    <script>
+        function validateLoginForm() {
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            let isValid = true;
+            
+            // Clear previous errors
+            document.querySelectorAll('.error').forEach(el => el.textContent = '');
+            
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('email-error').textContent = 'Please enter a valid email address';
+                isValid = false;
+            }
+            
+            // Validate password
+            if (password.length === 0) {
+                document.getElementById('password-error').textContent = 'Password is required';
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+    </script>
+</body>
+</html>

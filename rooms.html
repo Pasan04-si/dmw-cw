@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rooms - Hotel Bougainvilla</title>
+  <link rel="stylesheet" href="style1.css">
+    
+  <style>
+.services {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+ 
+    .service-box {
+      text-align: center;
+      width: 30%;
+    }
+ 
+    .service-box img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .rooms-heading {
+      text-align: center;
+      margin: 30px 0;
+      color: #1b5a99;
+    }
+
+    .service-box h4 {
+      color: #761c6e;
+    }
+
+    .room-description {
+      margin-top: 10px;
+      text-align: left;
+    }
+
+    .room-description ul {
+      padding-left: 15px;
+    }
+
+    .room-description li {
+      margin-bottom: 5px;
+    }
+    .custom-btn {
+    display: inline-block;
+    background-color:rgb(45, 34, 105); /* same blue as your image */
+    color: white;
+    text-align: center;
+    padding: 14px 0;
+    width: 20%;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: sans-serif;
+    margin: 20px 0;
+  }
+</style>
+ 
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="logo">Hotel Bougainvilla</div>
+      <ul>
+        <li><a href="dashboard.php">Home</a></li>
+        <li><a href="rooms.html">Rooms</a></li>
+        <li><a href="facilities.html">Facilities</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="logout.php">Logout</a></li>
+      </ul>
+    </div>
+  </header>
+ 
+  <main>
+    <h1 class="rooms-heading">OUR ROOMS</h1>
+    
+    <!-- Services Section -->
+  <section class="services">
+    <div class="service-box">
+      <img src="room_1.jpg" alt="Premium King Room" />
+      <h4>Premium King Room (Price- lkr 40000 per day)</h4>
+      <div class="room-description">
+        <ul>
+          <li>Spacious king-size bed with premium luxury bedding</li>
+          <li>Private balcony with stunning city or garden views</li>
+          <li>Modern en-suite bathroom with rainfall shower and bathtub</li>
+          <li>Complimentary high-speed Wi-Fi and smart TV entertainment</li>
+          <li>Mini-bar, coffee machine, and 24/7 room service</li>
+          <li>Air conditioning, safe deposit box, and work desk area</li>
+        </ul>
+      </div>
+    </div>
+    <div class="service-box">
+      <img src="room_2.jpg" alt="Deluxe Room" />
+      <h4>Deluxe Room (Price- lkr 30000 per day)</h4>
+      <div class="room-description">
+        <ul>
+          <li>Comfortable queen-size bed with quality cotton linens</li>
+          <li>Large windows offering natural light and pleasant views</li>
+          <li>Well-appointed bathroom with modern fixtures and amenities</li>
+          <li>Free Wi-Fi access and flat-screen TV with cable channels</li>
+          <li>Tea/coffee making facilities and complimentary bottled water</li>
+          <li>Climate control, wardrobe space, and bedside reading lights</li>
+        </ul>
+      </div>
+    </div>
+    <div class="service-box">
+      <img src="room_3.jpg" alt="Double Room" />
+      <h4>Double Room (Price- lkr 20000 per day)</h4>
+      <div class="room-description">
+        <ul>
+          <li>Two comfortable single beds ideal for friends or colleagues</li>
+          <li>Bright and airy room design with functional furniture layout</li>
+          <li>Clean private bathroom with shower and essential toiletries</li>
+          <li>Reliable internet connection and television for entertainment</li>
+          <li>Basic refreshment station with complimentary tea and coffee</li>
+          <li>Essential amenities including air conditioning and secure storage</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+ 
+  </main>
+        <center><a href="Booking_Room.php" class="custom-btn">Book Now</a></center>
+  
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Facilities - Hotel Bougainvilla</title>
+  <link rel="stylesheet" href="style1.css">
+  <style>
+    .services {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+ 
+    .service-box {
+      text-align: center;
+      width: 30%;
+    }
+ 
+    .service-box img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .rooms-heading {
+      text-align: center;
+      margin: 30px 0;
+      color: #1b5a99;
+    }
+
+    .service-box h4 {
+      color: #761c6e;
+    }
+
+    .facilities-header {
+      text-align: center;
+      margin: 40px 0 20px 0;
+    }
+
+    .facilities-header h2 {
+      color: #1b5a99;
+      font-size: 2.5em;
+      margin-bottom: 15px;
+    }
+
+    .facilities-description {
+      color: #000;
+      font-size: 1.1em;
+      max-width: 800px;
+      margin: 0 auto 40px auto;
+      line-height: 1.6;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="logo">Hotel Bougainvilla</div>
+      <ul>
+        <li><a href="dashboard.php">Home</a></li>
+        <li><a href="rooms.html">Rooms</a></li>
+        <li><a href="facilities.html">Facilities</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="logout.php">Logout</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <div class="facilities-header">
+      <h2>Hotel Facilities</h2>
+      <p class="facilities-description">
+        Discover our exceptional range of amenities designed to enhance your stay. From luxurious relaxation to exquisite dining, 
+        Hotel Bougainvillea offers world-class facilities that cater to your every need, ensuring an unforgettable experience.
+      </p>
+    </div>
+    
+    <section class="services">
+      <div class="service-box">
+        <img src="pool1.avif" alt="Swimming Pool" />
+        <h4>Swimming Pool</h4>
+        <p>Enjoy our outdoor pool with a beautiful city view, perfect for relaxation and leisure.</p>
+      </div>
+      
+      <div class="service-box">
+        <img src="spa3.avif" alt="Spa" />
+        <h4>Spa & Wellness</h4>
+        <p>Rejuvenate with our full-service spa offering massages, facials, and body treatments.</p>
+      </div>
+      
+      <div class="service-box">
+        <img src="resturant.avif" alt="Restaurant" />
+        <h4>Restaurant & Bar</h4>
+        <p>Delight in gourmet cuisine and signature cocktails at our on-site restaurant and bar.</p>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
